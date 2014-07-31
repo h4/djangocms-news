@@ -1,8 +1,9 @@
 from distutils.core import setup
+import news
 
 setup(
     name='djangocms-news',
-    version='0.1.0',
+    version=news.__version__,
     packages=['news', 'news.migrations'],
     url='https://github.com/h4/djangocms-news',
     license='MIT',
