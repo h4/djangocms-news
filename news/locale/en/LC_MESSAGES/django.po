@@ -1,0 +1,121 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-06-23 23:18+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: cms_app.py:8
+msgid "News App"
+msgstr ""
+
+#: cms_plugins.py:17
+msgid "Latest news"
+msgstr ""
+
+#: cms_toolbar.py:11 models.py:31
+msgid "News"
+msgstr ""
+
+#: cms_toolbar.py:13
+msgid "Add news"
+msgstr ""
+
+#: models.py:20
+msgid "Lead"
+msgstr ""
+
+#: models.py:21
+msgid "Title"
+msgstr ""
+
+#: models.py:22
+msgid "Description"
+msgstr ""
+
+#: models.py:25
+msgid "Is published"
+msgstr ""
+
+#: models.py:26
+msgid "Publication Date"
+msgstr ""
+
+#: models.py:32
+msgid "News_plural"
+msgstr "News"
+
+#: models.py:40
+#, python-format
+msgid "News at: %s"
+msgstr ""
+
+#: models.py:57
+msgid "Image"
+msgstr ""
+
+#: models.py:66
+msgid "Number of news to show"
+msgstr ""
+
+#: models.py:67
+msgid "Limits the number of news that will be displayed"
+msgstr ""
+
+#: templates/news/latest_news.html:3 templates/news/news_list.html:7
+msgid "Recent news"
+msgstr ""
+
+#: templates/news/latest_news.html:12 templates/news/news_archive_day.html:15
+#: templates/news/news_list.html:21
+msgid "No news for this day"
+msgstr ""
+
+#: templates/news/latest_news.html:16
+msgid "Все новости"
+msgstr "All news"
+
+#: templates/news/news_archive_day.html:5
+#: templates/news/news_archive_month.html:5
+#: templates/news/news_archive_year.html:5
+msgid "News for"
+msgstr ""
+
+#: templates/news/news_archive_month.html:5
+#: templates/news/news_archive_year.html:5
+msgid "year"
+msgstr ""
+
+#: templates/news/news_archive_month.html:15
+msgid "No news for this month"
+msgstr ""
+
+#: templates/news/news_archive_year.html:15
+msgid "No news for this year"
+msgstr ""
+
+#: templates/news/news_item.html:4
+msgid "театр балета Бориса Эйфмана"
+msgstr ""
+
+#: templates/news/news_item.html:5
+msgid ""
+"Санкт-Петербургский Государственный Академический Театр Балета Бориса "
+"Эйфмана. "
+msgstr ""
+
+#: templates/news/news_item.html:26
+msgid "Новости"
+msgstr "News"

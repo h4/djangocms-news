@@ -1,0 +1,18 @@
+{% extends "news/news_base.html" %}
+{% load i18n %}
+{% block content_news %}
+{{ block.super }}
+<h1>{% trans "News for" %} {{ month|date:'b Y' }}  {% trans "year" %}</h1>
+
+<div class="news-list">
+    {% for news in object_list %}
+        <div class="news-list__news">
+            <h1><a href="{% url 'news:news_item' year=news.pub_date|date:'Y' month=news.pub_date|date:'m' day=news.pub_date|date:"d" pk=news.pk  %}">{{ news.title }}</a></h1>
+            <h2><time>{{ news.pub_date|date }}</time></h2>
+            <div class="news__text">{{ news.description }}</div>
+        </div>
+    {% empty %}
+        <div>{% trans "No news for this month" %}</div>
+    {% endfor %}
+</div>
+{% endblock %}

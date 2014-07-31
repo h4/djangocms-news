@@ -1,0 +1,24 @@
+{% extends CMS_TEMPLATE %}
+{% load i18n sekizai_tags %}
+{% block extrahead %}
+    {% addtoblock "css" %}
+        <link rel="stylesheet" href="{{ STATIC_URL }}news/css/news-list.css" />
+    {% endaddtoblock %}
+    {% addtoblock "css" %}
+        <link rel="stylesheet" href="{{ STATIC_URL }}news/css/news-item.css" />
+    {% endaddtoblock %}
+
+    {{ block.super }}
+{% endblock %}
+
+{% block extend_breadcrumb %}
+	{{ block.super }}
+	{% block blog_breadcrumb %}
+	{% endblock blog_breadcrumb %}
+{% endblock extend_breadcrumb%}
+
+{% block content %}
+<div class="content content__news">
+	{% block content_news %}{% endblock %}
+</div>
+{% endblock %}

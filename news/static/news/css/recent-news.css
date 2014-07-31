@@ -1,0 +1,34 @@
+.recent-news {
+
+}
+.recent-news::after {
+    content: "";
+    font-size: 0;
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+}
+.recent-news__item {
+    float: left;
+    width: 140px;
+    margin-right: 64px;
+}
+.recent-news .last-item {
+    margin-right: 0;
+}
+.recent-news__title {
+    font-size: 16px;
+    margin-top: 0;
+}
+.recent-news__title a:link,
+.recent-news__title a:visited {
+    text-decoration: none;
+}
+.recent-news__title a:hover {
+    text-decoration: underline;
+}
+.recent-news__pubdate {
+    font-size: 13px;
+    margin-bottom: 8px ;
+}

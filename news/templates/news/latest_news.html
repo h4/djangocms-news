@@ -1,0 +1,16 @@
+{% load i18n sekizai_tags %}
+{% addtoblock "css" %}<link rel="stylesheet" href="{{ STATIC_URL }}news/css/recent-news.css" />{% endaddtoblock %}
+<h2 class="plugin-title">{% trans "Recent news" %}</h2>
+
+<div class="recent-news">
+    {% for news in object_list %}
+        <div class="recent-news__item {% if forloop.last %}last-item{% endif %}">
+            <p class="recent-news__pubdate"><time>{{ news.pub_date|date:"d E, Y" }}</time></p>
+            <h1 class="recent-news__title"><a href="{% url 'news:news_item' year=news.pub_date|date:'Y' month=news.pub_date|date:'m' day=news.pub_date|date:"d" pk=news.pk  %}">{{ news.title }}</a></h1>
+        </div>
+    {% empty %}
+        <div>{% trans "No news for this day" %}</div>
+    {% endfor %}
+</div>
+
+<p><a href="{% url 'news:news_index' %}">{% trans "Все новости" %}</a></p>

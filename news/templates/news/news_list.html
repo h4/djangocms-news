@@ -1,0 +1,43 @@
+{% extends "news/news_base.html" %}
+{% load i18n sekizai_tags thumbnail %}
+{% addtoblock "css" %}<link rel="stylesheet" href="{{ STATIC_URL }}news/css/news-list.css" />{% endaddtoblock %}
+{% block content_news %}
+{{ block.super }}
+    <div class="container">
+        <h1>{% trans "Recent news" %}</h1>
+
+        <div class="news-list">
+            {% for news in object_list %}
+                <section class="news-list__item clearfix">
+                    <img class="news-list__image" src="{% thumbnail news.cover_image 300x195 crop %}" alt="" />
+                    
+                    <div class="news-list__item-data">
+                        <h1 class="news-list__title"><a href="{% url 'news:news_item' year=news.pub_date|date:'Y' month=news.pub_date|date:'m' day=news.pub_date|date:"d" pk=news.pk  %}">{{ news.title }}</a></h1>
+                        <p><time class="news-list__pubdate">{{ news.pub_date|date }}</time></p>
+                        <div class="news-list__text">
+                            {% if news.lead %}
+                                {{ news.lead|safe }}
+                            {% else %}
+                                {{ news.description|truncatewords_html:"40"|safe }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </section>
+            {% empty %}
+                <div>{% trans "No news for this day" %}</div>
+            {% endfor %}
+
+            <div class="news-list__pager">
+                {% if is_paginated %}
+                    {% for page_item in page_obj.paginator.page_range %}
+                        {% if page_item == page_obj.number %}
+                            {{ page_item }}
+                        {% else %}
+                            <a class="news-list__pager-link" href="{% url 'news:news_index' %}?page={{ page_item }}">{{ page_item }}</a>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

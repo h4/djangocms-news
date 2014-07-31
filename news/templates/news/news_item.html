@@ -1,0 +1,51 @@
+{% extends "news/news_base.html" %}
+{% load i18n thumbnail sekizai_tags %}
+
+{% block title %}{{ object.title }} - {% trans "театр балета Бориса Эйфмана" %}{% endblock %}
+{% block description %}{% trans "Санкт-Петербургский Государственный Академический Театр Балета Бориса Эйфмана. " %}{{ object.title }}{% endblock %}
+
+{% block content_news %}
+
+    {% addtoblock "css" %}
+        <link rel="stylesheet" href="{{ STATIC_URL }}theatre/css/slider.css">
+    {% endaddtoblock %}
+
+    {% addtoblock "js" %}
+        <script src="{{ STATIC_URL }}theatre/js/slider.js"></script>
+    {% endaddtoblock %}
+    {% addtoblock "js" %}
+        <script>
+        $(function() {
+            $('.gallery').slider({"show_arrows": "when_need"});
+        });
+        </script>
+    {% endaddtoblock %}
+
+{{ block.super }}
+<article class="news-item">
+    <div class="news-item__page-title"><a href="{% url 'news:news_index' %}">{% trans 'Новости' %}</a></div>
+    <h1 class="news-item__title">{{ object.title }}</h1>
+    <div class="news-item__pubdate"><time>{{ object.pub_date|date:"d E, Y" }}</time></div>
+
+
+    {% if object.images.count %}
+        <div class="gallery news-item__gallery">
+            <div class="slider__arrow slider__arrow_disabled_yes slider__arrow_direction_left"></div>
+            <section class="slider__content">
+                <div class="slider__wrapper">
+                {% for image in object.images.all %}
+                    <div class="news-item__image slider__item">
+                        <img src="{% thumbnail image.image 620x460 %}" alt="" />
+                    </div>
+                {% endfor %}
+                </div>
+            </section>
+            <div class="slider__arrow slider__arrow_direction_right"></div>
+        </div>
+    {% endif %}
+
+    <div class="news-item__text">
+        {{ object.description|safe }}
+    </div>
+</article>
+{% endblock %}
