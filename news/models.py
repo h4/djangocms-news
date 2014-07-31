@@ -49,7 +49,6 @@ class News(TranslatableModel, TimeStampedModel):
 
     def language_changer(self, language):
         return self.get_absolute_url()
-        return self.get_absolute_url()
 
 
 class NewsImage(TimeStampedModel):
@@ -58,6 +57,7 @@ class NewsImage(TimeStampedModel):
 
     def __unicode__(self):
         return self.news.__unicode__()
+
 
 class LatestNewsPlugin(CMSPlugin):
     """
