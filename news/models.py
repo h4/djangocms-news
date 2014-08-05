@@ -16,8 +16,8 @@ class PublishedNewsManager(TranslationManager):
 
 class News(TranslatableModel, TimeStampedModel):
     translations = TranslatedFields(
+        title=models.CharField(_('Title'), max_length=256, null=True, blank=True),
         lead=HTMLField(_('Lead'), null=True, blank=True),
-        title=models.CharField(_('Title'), max_length=256),
         description=HTMLField(_('Description')),
     )
 
