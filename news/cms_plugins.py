@@ -1,4 +1,5 @@
-# coding=utf-8 
+# coding=utf-8
+from unicodedata import category
 from django.utils.translation import ugettext_lazy as _
 
 from cms.plugin_base import CMSPluginBase
@@ -21,6 +22,8 @@ class CMSLatestNewsPlugin(CMSPluginBase):
             Render the latest entries
         """
         qs = News.published.all()
+        if instance.category is not True:
+            qs.filter(category=instance.category)
 
         latest = qs[:instance.limit]
 

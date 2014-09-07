@@ -78,5 +78,6 @@ class LatestNewsPlugin(CMSPlugin):
     """
         Model for the settings when using the latest news cms plugin
     """
+    category = models.ForeignKey(Category, verbose_name=_('category'), null=True, blank=True)
     limit = models.PositiveIntegerField(_('Number of news to show'),
                                         help_text=_('Limits the number of news that will be displayed'))
