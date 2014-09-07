@@ -10,6 +10,16 @@ class NewsListView(ListView):
     paginate_by = 5
 
 
+class NewsCategoryView(ListView):
+    model = News
+    template_name = 'news/news_list.html'
+    paginate_by = 5
+
+    def get_queryset(self):
+        category_id = self.kwargs['category_id']
+        return News.objects.filter(category=category_id)
+
+
 class NewsItemView(DetailView):
     model = News
     template_name = 'news/news_item.html'

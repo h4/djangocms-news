@@ -34,7 +34,8 @@ class News(TranslatableModel, TimeStampedModel):
 
     @property
     def cover_image(self):
-        return self.images.all()[0].image
+        if len(self.images.all()):
+            return self.images.all()[0].image
 
     def __unicode__(self):
         return self.safe_translation_getter('title', _('News at: %s' % self.pub_date))
@@ -70,7 +71,7 @@ class Category(TranslatableModel, TimeStampedModel):
         verbose_name_plural = _('categories')
 
     def __unicode__(self):
-        return self.safe_translation_getter('title', _('News at: %s' % self.pub_date))
+        return self.safe_translation_getter('title', _('Category %s' % self.pk))
 
 
 class LatestNewsPlugin(CMSPlugin):
