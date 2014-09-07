@@ -1,0 +1,8 @@
+django==1.6
+django-cms==3.0.0
+south==1.0.0
+djangocms_text_ckeditor==2.3.0
+django-ckeditor-updated==4.2.8
+django-model-utils==2.0.0
+django-filer==0.9.7
+django-hvad==0.4.1
