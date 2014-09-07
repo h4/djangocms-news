@@ -71,7 +71,7 @@ class Category(TranslatableModel, TimeStampedModel):
         verbose_name_plural = _('categories')
 
     def __unicode__(self):
-        return self.safe_translation_getter('title', _('Category %s' % self.pk))
+        return self.lazy_translation_getter('title', _('Category %s' % self.pk))
 
 
 class LatestNewsPlugin(CMSPlugin):
