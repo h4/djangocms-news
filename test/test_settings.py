@@ -19,7 +19,7 @@ DATABASES = {
     }
 }
 
-ROOT_URLCONF = 'news.tests.urls'
+ROOT_URLCONF = 'test.urls'
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(APP_ROOT, '../app_static')
@@ -29,7 +29,7 @@ STATICFILES_DIRS = (
 )
 
 TEMPLATE_DIRS = (
-    os.path.join(APP_ROOT, 'tests/test_app/templates'),
+    os.path.join(APP_ROOT, 'test/templates'),
 )
 
 COVERAGE_REPORT_HTML_OUTPUT_DIR = os.path.join(
@@ -50,10 +50,13 @@ EXTERNAL_APPS = [
     'django.contrib.sitemaps',
     'django.contrib.sites',
     'cms',
+    'menus',
     'mptt',
+    'sekizai',
     'filer',
     'hvad',
     'ckeditor',
+    'easy_thumbnails',
 ]
 
 INTERNAL_APPS = [
@@ -61,8 +64,29 @@ INTERNAL_APPS = [
     # 'news.tests.test_app',
 ]
 
+MIDDLEWARE_CLASSES = (
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
+    'django.middleware.doc.XViewMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'cms.middleware.user.CurrentUserMiddleware',
+    'cms.middleware.page.CurrentPageMiddleware',
+    'cms.middleware.toolbar.ToolbarMiddleware',
+    'cms.middleware.language.LanguageCookieMiddleware',
+)
+
 TEMPLATE_CONTEXT_PROCESSORS = [
+    'django.contrib.auth.context_processors.auth',
+    'django.contrib.messages.context_processors.messages',
+    'django.core.context_processors.i18n',
     'django.core.context_processors.request',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'sekizai.context_processors.sekizai',
+    'cms.context_processors.cms_settings',
 ]
 
 INSTALLED_APPS = EXTERNAL_APPS + INTERNAL_APPS
@@ -71,3 +95,14 @@ COVERAGE_MODULE_EXCLUDES += EXTERNAL_APPS
 SECRET_KEY = 'foobar'
 
 CKEDITOR_UPLOAD_PATH = 'uploads'
+
+CMS_TEMPLATES = (
+    ('base.html', ('Base')),
+)
+
+LANGUAGE_CODE = 'en'
+
+LANGUAGES = (
+    ('ru', ('Russian')),
+    ('en', ('English')),
+)
