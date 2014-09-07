@@ -21,6 +21,7 @@ class News(TranslatableModel, TimeStampedModel):
         description=HTMLField(_('Description')),
     )
 
+    category = models.ForeignKey('Category', verbose_name=_('category'), null=True, blank=True)
     is_published = models.BooleanField(_('Is published'))
     pub_date = models.DateTimeField(_('Publication Date'), default=datetime.now)
 
@@ -57,6 +58,19 @@ class NewsImage(TimeStampedModel):
 
     def __unicode__(self):
         return self.news.__unicode__()
+
+
+class Category(TranslatableModel, TimeStampedModel):
+    translations = TranslatedFields(
+        title=models.CharField(_('Title'), max_length=256, null=True, blank=True),
+    )
+
+    class Meta:
+        verbose_name = _('category')
+        verbose_name_plural = _('categories')
+
+    def __unicode__(self):
+        return self.safe_translation_getter('title', _('News at: %s' % self.pub_date))
 
 
 class LatestNewsPlugin(CMSPlugin):
