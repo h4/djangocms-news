@@ -107,3 +107,5 @@ LANGUAGES = (
     ('ru', ('Russian')),
     ('en', ('English')),
 )
+
+NEWS_RELATED_MODELS = ('auth/user', )
