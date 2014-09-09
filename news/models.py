@@ -1,5 +1,6 @@
 # coding=utf-8
 from datetime import datetime
+from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from ckeditor.fields import RichTextField as HTMLField
 from filer.fields.image import FilerImageField
@@ -7,6 +8,7 @@ from hvad.models import TranslatableModel, TranslatedFields, TranslationManager
 from django.utils.translation import ugettext_lazy as _
 from cms.models import CMSPlugin
 from model_utils.models import TimeStampedModel
+from django.contrib.contenttypes import generic
 
 
 class PublishedNewsManager(TranslationManager):
@@ -21,6 +23,9 @@ class News(TranslatableModel, TimeStampedModel):
         description=HTMLField(_('Description')),
     )
 
+    content_type = models.ForeignKey(ContentType)
+    object_id = models.PositiveIntegerField()
+    content_object = generic.GenericForeignKey('content_type', 'object_id')
     category = models.ForeignKey('Category', verbose_name=_('category'), null=True, blank=True)
     is_published = models.BooleanField(_('Is published'))
     pub_date = models.DateTimeField(_('Publication Date'), default=datetime.now)
