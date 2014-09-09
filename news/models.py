@@ -23,8 +23,8 @@ class News(TranslatableModel, TimeStampedModel):
         description=HTMLField(_('Description')),
     )
 
-    content_type = models.ForeignKey(ContentType)
-    object_id = models.PositiveIntegerField()
+    content_type = models.ForeignKey(ContentType, verbose_name=_('linked entity'), null=True, blank=True)
+    object_id = models.PositiveIntegerField('entity id', null=True, blank=True)
     content_object = generic.GenericForeignKey('content_type', 'object_id')
     category = models.ForeignKey('Category', verbose_name=_('category'), null=True, blank=True)
     is_published = models.BooleanField(_('Is published'))

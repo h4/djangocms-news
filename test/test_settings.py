@@ -57,6 +57,7 @@ EXTERNAL_APPS = [
     'hvad',
     'ckeditor',
     'easy_thumbnails',
+    'genericadmin',
 ]
 
 INTERNAL_APPS = [

@@ -2,14 +2,15 @@
 from django.contrib import admin
 from hvad.admin import TranslatableAdmin
 from news.models import News, NewsImage, Category
+from genericadmin.admin import GenericAdminModelAdmin, StackedInlineWithGeneric
 
 
-class NewsImageAdmin(admin.StackedInline):
+class NewsImageAdmin(StackedInlineWithGeneric):
     model = NewsImage
     extra = 0
 
 
-class NewsAdmin(TranslatableAdmin):
+class NewsAdmin(GenericAdminModelAdmin, TranslatableAdmin):
     inlines = [
         NewsImageAdmin
     ]

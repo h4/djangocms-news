@@ -17,5 +17,6 @@ setup(
         'django-model-utils>=2.0.0',
         'django-filer>=0.9.7',
         'django-hvad>=0.4.1',
+        'django-genericadmin>=0.6',
     ],
 )
