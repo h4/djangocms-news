@@ -17,7 +17,7 @@ class NewsCategoryView(ListView):
 
     def get_queryset(self):
         category_id = self.kwargs['category_id']
-        return News.objects.filter(category=category_id)
+        return News.published.filter(category=category_id)
 
 
 class NewsItemView(DetailView):
