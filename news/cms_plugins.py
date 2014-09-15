@@ -23,7 +23,7 @@ class CMSLatestNewsPlugin(CMSPluginBase):
         """
         qs = News.published.all()
         if instance.category is not True:
-            qs.filter(category=instance.category)
+            qs = qs.filter(category=instance.category)
 
         latest = qs[:instance.limit]
 
