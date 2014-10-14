@@ -1,6 +1,6 @@
 #coding=utf-8
 from django.views.generic import ListView, DetailView, YearArchiveView, MonthArchiveView, DayArchiveView
-from news.models import News
+from news.models import News, Category
 from menus.utils import set_language_changer
 
 
@@ -14,6 +14,11 @@ class NewsCategoryView(ListView):
     model = News
     template_name = 'news/news_list.html'
     paginate_by = 5
+
+    def get_context_data(self, **kwargs):
+        context = super(NewsCategoryView, self).get_context_data(**kwargs)
+        context['category'] = Category.objects.get(pk=self.kwargs['category_id'])
+        return context
 
     def get_queryset(self):
         category_id = self.kwargs['category_id']
