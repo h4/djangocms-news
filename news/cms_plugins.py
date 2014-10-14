@@ -15,7 +15,9 @@ class CMSLatestNewsPlugin(CMSPluginBase):
     """
     model = LatestNewsPlugin
     name = _('Latest news')
-    render_template = "news/latest_news.html"
+
+    def get_render_template(self, context, instance, placeholder):
+        return 'news/{}.html'.format(instance.template_name)
 
     def render(self, context, instance, placeholder):
         """
