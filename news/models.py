@@ -86,3 +86,4 @@ class LatestNewsPlugin(CMSPlugin):
     category = models.ForeignKey(Category, verbose_name=_('category'), null=True, blank=True)
     limit = models.PositiveIntegerField(_('Number of news to show'),
                                         help_text=_('Limits the number of news that will be displayed'))
+    show_cover = models.BooleanField(_('Show cower'), default=True)
